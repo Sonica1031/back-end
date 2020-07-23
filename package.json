@@ -1,0 +1,32 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "node index.js",
+    "server": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sonica1031/back-end.git"
+  },
+  "author": "Stephanie Otzoy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sonica1031/back-end/issues"
+  },
+  "homepage": "https://github.com/Sonica1031/back-end#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^3.23.3",
+    "jest": "^26.1.0",
+    "knex": "^0.21.2",
+    "nodemon": "^2.0.4",
+    "sessions": "0.0.2-7",
+    "sqlite3": "^5.0.0"
+  }
+}
