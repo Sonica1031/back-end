@@ -1,7 +1,7 @@
 const express = require("express");
 const LM = require("./Login-model.js");
 const router = express.Router();
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 router.post("/", async (req, res, next) => {
     try{
