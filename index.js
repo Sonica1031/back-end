@@ -19,4 +19,8 @@ server.use((err, req, res, next) => {
 
 server.use("/api/register", RegisterRouter);
 server.use("/api/login", LoginRouter);
+
+server.get("/", (req, res) => {
+    res.json({message: "Welcome to African Marketplace API"})
+})
 server.listen(port || 5000, () => console.log('API running on port 5000'));
