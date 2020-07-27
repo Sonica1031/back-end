@@ -6,7 +6,8 @@ const bcrypt = require("bcryptjs");
 router.post("/", async (req, res, next) => {
     try{
         const {username, password} = req.body;
-        const hash = bcrypt.hashSync(password, 12);
+        console.log(password)
+        const hash = await bcrypt.hashSync(password, 12);
         if(!username || !password){
             res.status(500).json({errorMessage: "Not Authorized"});
         }else{
