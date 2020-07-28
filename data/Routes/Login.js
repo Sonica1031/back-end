@@ -10,6 +10,7 @@ router.post("/", async (req, res, next) => {
     if(!user || !bcrypt.compareSync(password, user[0].password)){
         res.status(500).json({errorMessage: "invalid user!"});
     }else{
+        req.session.name = user[0].username;
         res.status(200).json(`Welcome ${user[0].username}`);
     }
 }catch(error){

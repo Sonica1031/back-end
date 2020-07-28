@@ -1,3 +1,4 @@
+const { table } = require("../config");
 
 exports.up = function(knex) {
   return knex.schema
@@ -7,6 +8,13 @@ exports.up = function(knex) {
             .unique()
             .notNullable();
         tbl.text('password', 128)
+            .notNullable();
+        tbl.text('email', 128)
+            .notNullable()
+            .unique();
+        tbl.text('firstName', 128)
+            .notNullable();
+        tbl.text('lastName', 128)
             .notNullable();
     })
 };
