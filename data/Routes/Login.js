@@ -11,7 +11,7 @@ router.post("/", async (req, res, next) => {
         res.status(500).json({errorMessage: "invalid user!"});
     }else{
         req.session.name = user[0].username;
-        res.status(200).json(`Welcome ${user[0].username}`);
+        res.json({user});
     }
 }catch(error){
     next(error);
