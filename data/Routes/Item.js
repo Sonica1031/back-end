@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../Routes/Shop-model");
+const db = require("./item-model");
 const authentication = require("../middleware/authenticate-middleware");
 
 router.get('/:id', authentication, async (req, res, next) => {
@@ -15,13 +15,13 @@ router.get('/:id', authentication, async (req, res, next) => {
 
 router.post('/:id', authentication, async (req, res, next) => {
     try{
-        const {shopName, description} = req.body;
+        const {itemName, itemType, price, itemdesc, imageURL} = req.body;
         const ownerID = req.params.id;
-        if(!shopName, !description, !ownerID){
-            res.status(500).json({errorMessage: "You need a shop name and description to proceed!"});
+        if(!itemName, !itemType, !ownerID, !price, !itemdesc){
+            res.status(500).json({errorMessage: "You need an more information to proceed!"});
         }else{
-        await db.create(shopName, description, ownerID);
-        res.json("You've successfully created a new shop!");
+        await db.create(itemName, itemType, price, itemdesc, ownerID, imageURL);
+        res.json("You've successfully created a new item!");
         }
     }catch(err){
         next(err);

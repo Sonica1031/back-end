@@ -8,7 +8,7 @@ const port = process.env.PORT;
 
 const RegisterRouter = require("./data/Routes/Register");
 const LoginRouter = require("./data/Routes/Login");
-const ShopRouter = require("./data/Routes/Shop");
+const ItemRouter = require("./data/Routes/Item");
 
 const authenticate = require("./data/middleware/authenticate-middleware");
 
@@ -37,7 +37,7 @@ server.use(
 
 server.use("/api/register", RegisterRouter);
 server.use("/api/login", LoginRouter);
-server.use("/api", ShopRouter);
+server.use("/api", ItemRouter);
 
 server.get("/", authenticate, (req, res) => {
     res.json({message: "Welcome to African Marketplace API"})
