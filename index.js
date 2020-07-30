@@ -4,13 +4,13 @@ const server = express();
 const cors = require("cors");
 const helmet = require("helmet");
 const session = require('express-session');
+const protect = require("./data/middleware/authenticate-middleware");
 const port = process.env.PORT;
 
 const RegisterRouter = require("./data/Routes/Register");
 const LoginRouter = require("./data/Routes/Login");
 const ItemRouter = require("./data/Routes/Item");
-
-const authenticate = require("./data/middleware/authenticate-middleware");
+const OwnerRouter = require("./data/Routes/Owners");
 
 server.use(cors());
 server.use(express.json());
@@ -38,6 +38,7 @@ server.use(
 server.use("/api/register", RegisterRouter);
 server.use("/api/login", LoginRouter);
 server.use("/api", ItemRouter);
+server.use("/api/owner", protect, OwnerRouter);
 
 server.get("/", (req, res) => {
     res.json({message: "Welcome to African Marketplace API"})
