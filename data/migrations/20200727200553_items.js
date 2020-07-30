@@ -18,6 +18,8 @@ exports.up = function(knex) {
         tbl.integer('price')
             .notNull();
         tbl.text('imageUrl');
+        tbl.text('itemLocation')
+            .notNull();
     });
 };
 
