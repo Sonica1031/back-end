@@ -25,6 +25,7 @@
     "express-session": "^1.17.1",
     "helmet": "^3.23.3",
     "jest": "^26.1.0",
+    "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.2",
     "nodemon": "^2.0.4",
     "sessions": "0.0.2-7",
