@@ -31,10 +31,16 @@ const updateName = async (newName, ID) => {
     return;
 }
 
+const remove = async (ID) => {
+    await db("items").where("id", ID).del();
+    return;
+}
+
 module.exports = {
     find,
     findAll,
     findByID,
     create,
-    updateName
+    updateName,
+    remove
 }
