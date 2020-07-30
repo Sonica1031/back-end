@@ -32,8 +32,7 @@ router.put("/items/:id", async (req, res, next) => {
             res.json({errorMessage: "Need more information"})
         }else{
         ID = req.params.id
-        item = await db.findByID(ID);
-        await db.updateName(item.itemName, req.body.itemName);
+        await db.updateName(req.body.itemName, ID);
         res.json("Item updated successfully!");
         }
     }catch(err){
