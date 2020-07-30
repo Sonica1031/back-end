@@ -11,6 +11,7 @@ const RegisterRouter = require("./data/Routes/Register");
 const LoginRouter = require("./data/Routes/Login");
 const ItemRouter = require("./data/Routes/Item");
 const OwnerRouter = require("./data/Routes/Owners");
+const ItemTypeRouter = require("./data/Routes/itemtype");
 
 server.use(cors());
 server.use(express.json());
@@ -39,6 +40,7 @@ server.use("/api/register", RegisterRouter);
 server.use("/api/login", LoginRouter);
 server.use("/api", ItemRouter);
 server.use("/api/owner", protect, OwnerRouter);
+server.use("/api/itemType", ItemTypeRouter);
 
 server.get("/", (req, res) => {
     res.json({message: "Welcome to African Marketplace API"})
