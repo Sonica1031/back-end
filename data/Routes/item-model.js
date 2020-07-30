@@ -11,12 +11,12 @@ const findAll = async () => {
     return itemInfo;
 }
 
-const create = async (itemName, itemType, price, itemdesc, ownerID, imageURL) => {
-    if (imageURL != ""){
-    await db('items').insert({itemName: itemName, itemType: itemType, price: price, itemdesc: itemdesc, owner_id: ownerID, imageURL: imageURL});
+const create = async (itemName, itemType, price, itemdesc, itemLocation, imageUrl) => {
+    if (imageUrl != ""){
+    await db('items').insert({itemName: itemName, itemType: itemType, price: price, itemdesc: itemdesc, imageUrl: imageUrl, itemLocation: itemLocation});
     return;
     }else{
-    await db('items').insert({itemName: itemName, itemType: itemType, price: price, itemdesc: itemdesc, owner_id: ownerID});
+    await db('items').insert({itemName: itemName, itemType: itemType, price: price, itemdesc: itemdesc, itemLocation: itemLocation});
     return;
     }
 }

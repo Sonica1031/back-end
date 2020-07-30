@@ -13,11 +13,11 @@ router.get("/items", async (req,res, next) => {
 
 router.post("/items", async (req, res, next) => {
     try{
-            const {itemName, itemType, price, itemdesc, imageURL} = req.body;
-            if(!itemName, !itemType, !price, !itemdesc){
+            const {itemName, itemType, price, itemdesc, imageUrl, itemLocation} = req.body;
+            if(!itemName, !itemType, !price, !itemdesc, !itemLocation){
                 res.status(500).json({errorMessage: "You need an more information to proceed!"});
             }else{
-            await db.create(itemName, itemType, price, itemdesc, imageURL);
+            await db.create(itemName, itemType, price, itemdesc, imageUrl, itemLocation);
             res.json("You've successfully created a new item!");
             }
         }catch(err){
