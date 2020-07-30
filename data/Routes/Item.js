@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("./item-model");
+const { OPEN_READWRITE } = require("sqlite3");
 
 router.get("/items", async (req,res, next) => {
     try{
@@ -25,9 +26,16 @@ router.post("/items", async (req, res, next) => {
         }
 })
 
-router.put("/items", async (req, res, next) => {
+router.put("/items/:id", async (req, res, next) => {
     try{
-
+        if(!req.body.itemName){
+            res.json({errorMessage: "Need more information"})
+        }else{
+        ID = req.params.ID
+        item = await db.findByID(ID);
+        await db.updateName(item, req.body.itemName);
+        res.json("Item updated successfully!");
+        }
     }catch(err){
         next(err);
     }

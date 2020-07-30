@@ -11,6 +11,11 @@ const findAll = async () => {
     return itemInfo;
 }
 
+const findByID = async (ID) => {
+    const itemInfo = await db("items").select("*").where("id", ID);
+    return itemInfo
+}
+
 const create = async (itemName, itemType, price, itemdesc, itemLocation, imageUrl) => {
     if (imageUrl != ""){
     await db('items').insert({itemName: itemName, itemType: itemType, price: price, itemdesc: itemdesc, imageUrl: imageUrl, itemLocation: itemLocation});
@@ -30,6 +35,7 @@ const updateName = async (oldName, newName) => {
 module.exports = {
     find,
     findAll,
+    findByID,
     create,
     updateName
 }
