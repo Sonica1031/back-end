@@ -11,7 +11,7 @@ const RegisterRouter = require("./data/Routes/Register");
 const LoginRouter = require("./data/Routes/Login");
 const ItemRouter = require("./data/Routes/Item");
 const OwnerRouter = require("./data/Routes/Owners");
-const ItemTypeRouter = require("./data/Routes/Itemtype");
+const ItemTypeRouter = require("./data/Routes/ItemType");
 
 server.use(cors());
 server.use(express.json());
