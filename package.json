@@ -27,6 +27,7 @@
     "jest": "^26.1.0",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.2",
+    "memorystore": "^1.6.2",
     "nodemon": "^2.0.4",
     "sessions": "0.0.2-7",
     "sqlite3": "^5.0.0"
