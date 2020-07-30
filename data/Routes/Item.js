@@ -33,7 +33,7 @@ router.put("/items/:id", async (req, res, next) => {
         }else{
         ID = req.params.id
         item = await db.findByID(ID);
-        await db.updateName(item, req.body.itemName);
+        await db.updateName(item.itemName, req.body.itemName);
         res.json("Item updated successfully!");
         }
     }catch(err){
