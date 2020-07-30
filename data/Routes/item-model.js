@@ -21,8 +21,8 @@ const create = async (itemName, itemType, price, itemdesc, itemLocation, imageUr
     }
 }
 
-const updateName = async (ownerID, newName) => {
-    const itemInfo = await db("shop").select("*").where("owner_id", ownerID);
+const updateName = async (oldName, newName) => {
+    const itemInfo = await db("item").select("*").where("itemName", oldName);
     await db("item").insert(newName).where("itemName", itemInfo.itemName);
     return;
 }

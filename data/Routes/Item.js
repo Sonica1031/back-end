@@ -17,12 +17,20 @@ router.post("/items", async (req, res, next) => {
             if(!itemName, !itemType, !price, !itemdesc, !itemLocation){
                 res.status(500).json({errorMessage: "You need an more information to proceed!"});
             }else{
-            await db.create(itemName, itemType, price, itemdesc, imageUrl, itemLocation);
+            await db.create(itemName, itemType, price, itemdesc, itemLocation, imageUrl);
             res.json("You've successfully created a new item!");
             }
         }catch(err){
             next(err);
         }
+})
+
+router.put("/items", async (req, res, next) => {
+    try{
+
+    }catch(err){
+        next(err);
+    }
 })
 
 module.exports = router;
