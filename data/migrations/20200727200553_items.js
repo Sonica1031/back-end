@@ -3,10 +3,6 @@ exports.up = function(knex) {
     return knex.schema
     .createTable('items', tbl => {
         tbl.increments();
-        tbl.integer('owner_id')
-            .notNull()
-            .references('id')
-            .inTable('owners');
         tbl.integer('itemType')
             .notNull()
             .references('id')

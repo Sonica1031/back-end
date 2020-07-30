@@ -11,4 +11,18 @@ router.get("/items", async (req,res, next) => {
     }
 })
 
+router.post("/items", async (req, res, next) => {
+    try{
+            const {itemName, itemType, price, itemdesc, imageURL} = req.body;
+            if(!itemName, !itemType, !price, !itemdesc){
+                res.status(500).json({errorMessage: "You need an more information to proceed!"});
+            }else{
+            await db.create(itemName, itemType, price, itemdesc, imageURL);
+            res.json("You've successfully created a new item!");
+            }
+        }catch(err){
+            next(err);
+        }
+})
+
 module.exports = router;
