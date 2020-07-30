@@ -6,6 +6,11 @@ const find = async (ownerID) => {
    return itemInfo
 }
 
+const findAll = async () => {
+    const itemInfo = await db("items").select("*")
+    return itemInfo;
+}
+
 const create = async (itemName, itemType, price, itemdesc, ownerID, imageURL) => {
     if (imageURL != ""){
     await db('items').insert({itemName: itemName, itemType: itemType, price: price, itemdesc: itemdesc, owner_id: ownerID, imageURL: imageURL});
@@ -24,6 +29,7 @@ const updateName = async (ownerID, newName) => {
 
 module.exports = {
     find,
+    findAll,
     create,
     updateName
 }

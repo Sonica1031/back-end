@@ -28,4 +28,13 @@ router.post('/:id', authentication, async (req, res, next) => {
     }
 })
 
+router.get("/items", async (req,res, next) => {
+    try{
+       const item = await db.findAll();
+       res.json(item);
+    }catch(error){
+        next(error);
+    }
+})
+
 module.exports = router;
