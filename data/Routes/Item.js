@@ -39,13 +39,9 @@ router.get("/items/:id", async (req, res, next) => {
 
 router.put("/items/:id", async (req, res, next) => {
     try{
-        if(!req.body.itemName){
-            res.json({errorMessage: "Need more information"})
-        }else{
         ID = req.params.id
-        await db.updateName(req.body.itemName, ID);
+        await db.updateName(req.body, ID);
         res.json("Item updated successfully!");
-        }
     }catch(err){
         next(err);
     }

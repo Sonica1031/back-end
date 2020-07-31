@@ -15,5 +15,5 @@ test("REGISTER /", async () => {
 })
 
 test("LOGIN /", async () => {
-    
+    const res = await supertest(server).post("")
 })

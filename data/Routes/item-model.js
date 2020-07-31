@@ -27,7 +27,7 @@ const create = async (itemName, itemType, price, itemdesc, itemLocation, imageUr
 }
 
 const updateName = async (newName, ID) => {
-    await db("items").where("id", ID).update("itemName", newName);
+    await db("items").where("id", ID).update(newName);
     return;
 }
 
