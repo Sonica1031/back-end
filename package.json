@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "test",
+    "test": "jest",
     "start": "node index.js",
     "server": "nodemon index.js"
   },
@@ -30,6 +30,7 @@
     "memorystore": "^1.6.2",
     "nodemon": "^2.0.4",
     "sessions": "0.0.2-7",
-    "sqlite3": "^5.0.0"
+    "sqlite3": "^5.0.0",
+    "supertest": "^4.0.2"
   }
 }

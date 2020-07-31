@@ -27,6 +27,16 @@ router.post("/items", async (req, res, next) => {
         }
 })
 
+router.get("/items/:id", async (req, res, next) => {
+    try{
+        ID = req.params.id
+        const result = await db.findByID(ID);
+        res.json(result)
+    }catch(err){
+        next(err);
+    }
+})
+
 router.put("/items/:id", async (req, res, next) => {
     try{
         if(!req.body.itemName){
