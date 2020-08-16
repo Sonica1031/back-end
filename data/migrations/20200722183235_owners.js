@@ -18,7 +18,6 @@ exports.up = function(knex) {
             .notNullable();
     })
 };
-
 exports.down = function(knex) {
   
 };

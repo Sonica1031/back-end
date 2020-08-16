@@ -4,9 +4,11 @@ exports.up = function(knex) {
     .createTable('items', tbl => {
         tbl.increments();
         tbl.integer('itemType')
-            .notNull()
             .references('id')
-            .inTable('itemType');
+            .inTable('itemType')
+        tbl.integer('shopId')
+            .references('id')
+            .inTable('shop');
         tbl.text('itemName', 128)
             .notNull();
         tbl.text('itemdesc', 128)
@@ -14,8 +16,6 @@ exports.up = function(knex) {
         tbl.integer('price')
             .notNull();
         tbl.text('imageUrl');
-        tbl.text('itemLocation')
-            .notNull();
     });
 };
 
