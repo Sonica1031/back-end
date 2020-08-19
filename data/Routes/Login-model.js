@@ -6,7 +6,7 @@ const Find = async (item) =>{
 }
 
 const FindById = async (item) =>{
-    const result = await db("owners").select("*").where("id", item);
+    const result = await db("owners").select("*").leftJoin("shop", "shop.owners_id", "owners.id").where("id", item);
     return result;
 }
 

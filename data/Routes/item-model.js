@@ -1,8 +1,8 @@
 const db = require("../config");
 const { response } = require("express");
 
-const find = async (ownerID) => {
-   const itemInfo = await db("items").select("*").where("owner_id", ownerID);
+const find = async (shopId) => {
+   const itemInfo = await db("items").select("*").where("shopId", shopId);
    return itemInfo
 }
 
@@ -16,12 +16,12 @@ const findByID = async (ID) => {
     return itemInfo
 }
 
-const create = async (itemName, itemType, price, itemdesc, itemLocation, imageUrl) => {
+const create = async (shopID, itemName, itemType, price, itemdesc, imageUrl) => {
     if (imageUrl != ""){
-    await db('items').insert({itemName: itemName, itemType: itemType, price: price, itemdesc: itemdesc, imageUrl: imageUrl, itemLocation: itemLocation});
+    await db('items').insert({itemName: itemName, itemType: itemType, price: price, itemdesc: itemdesc, imageUrl: imageUrl, shopId: shopID});
     return;
     }else{
-    await db('items').insert({itemName: itemName, itemType: itemType, price: price, itemdesc: itemdesc, itemLocation: itemLocation});
+    await db('items').insert({itemName: itemName, itemType: itemType, price: price, itemdesc: itemdesc, shopId: shopID});
     return;
     }
 }

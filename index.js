@@ -9,8 +9,8 @@ const port = process.env.PORT;
 
 const RegisterRouter = require("./data/Routes/Register");
 const LoginRouter = require("./data/Routes/Login");
+const ShopRouter = require("./data/Routes/Shop");
 const ItemRouter = require("./data/Routes/Item");
-const OwnerRouter = require("./data/Routes/Owners");
 const ItemTypeRouter = require("./data/Routes/ItemType");
 
 server.use(cors());
@@ -38,9 +38,9 @@ server.use(
 
 server.use("/api/register", RegisterRouter);
 server.use("/api/login", LoginRouter);
-server.use("/api", ItemRouter);
-server.use("/api/owner", protect, OwnerRouter);
-server.use("/api/itemType", ItemTypeRouter);
+server.use("/api", protect, ShopRouter);
+server.use("/api/:id", protect, ItemRouter);
+server.use("/api/itemType", protect, ItemTypeRouter);
 
 server.get("/", (req, res) => {
     res.json({message: "Welcome to African Marketplace API"})

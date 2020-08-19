@@ -1,25 +1,25 @@
 const express = require("express");
 const router = express.Router();
 const db = require("./item-model");
-const { OPEN_READWRITE } = require("sqlite3");
-const { route } = require("./Owners");
 
-router.get("/items", async (req,res, next) => {
+router.get("/:shop_id/items", async (req, res, next) => {
     try{
-       const item = await db.findAll();
-       res.json(item);
-    }catch(error){
-        next(error);
+        const shopId = req.params.shop_id
+        const results = await db.find(shopId);
+        res.json(results)
+    }catch(err){
+        next(err);
     }
 })
 
-router.post("/items", async (req, res, next) => {
+router.post("/:shop_id/items", async (req, res, next) => {
     try{
-            const {itemName, itemType, price, itemdesc, imageUrl, itemLocation} = req.body;
-            if(!itemName, !itemType, !price, !itemdesc, !itemLocation){
+            const {itemName, itemType, price, itemdesc, imageUrl} = req.body;
+            if(!itemName, !itemType, !price, !itemdesc){
                 res.status(500).json({errorMessage: "You need an more information to proceed!"});
             }else{
-            await db.create(itemName, itemType, price, itemdesc, itemLocation, imageUrl);
+            const shopId = req.params.shop_id
+            await db.create(shopId, itemName, itemType, price, itemdesc, imageUrl);
             res.status(201).json("You've successfully created a new item!");
             }
         }catch(err){
@@ -27,9 +27,9 @@ router.post("/items", async (req, res, next) => {
         }
 })
 
-router.get("/items/:id", async (req, res, next) => {
+router.get("/:shop_id/items/:item_id", async (req, res, next) => {
     try{
-        ID = req.params.id
+        ID = req.params.item_id
         const result = await db.findByID(ID);
         res.json(result)
     }catch(err){
@@ -37,9 +37,9 @@ router.get("/items/:id", async (req, res, next) => {
     }
 })
 
-router.put("/items/:id", async (req, res, next) => {
+router.put("/:shop_id/items/:item_id", async (req, res, next) => {
     try{
-        ID = req.params.id
+        ID = req.params.item_id
         await db.updateName(req.body, ID);
         res.json("Item updated successfully!");
     }catch(err){
@@ -47,9 +47,9 @@ router.put("/items/:id", async (req, res, next) => {
     }
 })
 
-router.delete("/items/:id", async (req, res, next) => {
+router.delete("/:shop_id/items/:item_id", async (req, res, next) => {
     try{
-        ID = req.params.id
+        ID = req.params.item_id
         await db.remove(ID)
         res.json("Item deleted successfully")
     }catch(err){
